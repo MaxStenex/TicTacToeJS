@@ -1,1 +1,146 @@
 @import "normalize.scss";
+
+.container {
+   max-width: 550px;
+   margin: 0 auto;
+   padding: 15vh 10px;
+}
+.table {
+   
+		&__wrapper {
+         display: flex;
+         flex-direction: column;
+		}
+
+		&__row {
+         height: 150px;
+         display: flex;
+         &:nth-child(1) {
+            .table__cell {
+               border-top : none;
+            }
+         }
+         &:nth-child(3) {
+            .table__cell {
+               border-bottom : none;
+            }
+         }
+		}
+
+		&__cell {
+         border:2px solid black;
+         height: 100%;
+         flex: 0 0 33%;
+         position: relative;
+         &:nth-child(1) {
+            border-left: none;
+         }
+         &:nth-child(3) {
+            border-right: none;
+         }
+         &.x-placed{
+            &::before,
+            &::after {
+               content: '';
+               width: 10%;
+               height: 80%;
+               background-color: black;
+               position: absolute;
+               left:45%;
+               top:10%;
+            }
+            &::before{
+               transform:rotate(45deg);
+            }
+            &::after{
+               transform:rotate(-45deg);
+            }
+         }
+         &.zero-placed{
+            &::after {
+               content: '';
+               width: 80%;
+               height: 80%;
+               background-color: black;
+               position: absolute;
+               left:50%;
+               top:50%;
+               transform:translate(-50%,-50%);
+               border-radius: 50%;
+               z-index: 3;
+            }
+            &::before {
+               z-index: 100;
+               content: '';
+               width: 66%;
+               height: 66%;
+               background-color: #fff;
+               position: absolute;
+               left:50%;
+               top:50%;
+               transform:translate(-50%,-50%);
+               border-radius: 50%;
+            }
+         }
+      }
+}
+
+
+
+.current-x {
+   .table__cell{
+      &:hover{
+         &:not(.not-empty){
+            &::before,
+            &::after {
+               content: '';
+               width: 10%;
+               height: 80%;
+               background-color: #cccaca;
+               position: absolute;
+               left:45%;
+               top:10%;
+            }
+            &::before{
+               transform:rotate(45deg);
+            }
+            &::after{
+               transform:rotate(-45deg);
+            }
+         }
+      }
+   }
+}
+
+.current-zero {
+   .table__cell{
+      &:hover{
+         &:not(.not-empty){
+            &::after {
+               content: '';
+               width: 80%;
+               height: 80%;
+               background-color: #cccaca;
+               position: absolute;
+               left:50%;
+               top:50%;
+               transform:translate(-50%,-50%);
+               border-radius: 50%;
+               z-index: 3;
+            }
+            &::before {
+               z-index: 100;
+               content: '';
+               width: 66%;
+               height: 66%;
+               background-color: #fff;
+               position: absolute;
+               left:50%;
+               top:50%;
+               transform:translate(-50%,-50%);
+               border-radius: 50%;
+            }
+         }
+      }
+   }
+}
