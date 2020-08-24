@@ -5,8 +5,43 @@
    margin: 0 auto;
    padding: 15vh 10px;
 }
+
 .table {
-   
+   position: relative;
+
+      &__end-game-block{
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 1000;
+         background-color: black;
+         opacity: .9;
+         flex-direction: column;
+         &.non-active{
+            display: none;
+         }
+      }
+
+      &__end-game-text {
+         font-size: 50px;
+         margin-bottom: 30px;
+         color:white;
+         text-align: center;
+      }
+
+      &__end-game-button {
+         width: 150px;
+         height: 50px;
+         font-size: 25px;
+         font-weight: 600;
+         &:hover{
+            transform: scale(1.05);
+         }
+      }
+      
 		&__wrapper {
          display: flex;
          flex-direction: column;
@@ -83,14 +118,15 @@
             }
          }
       }
+
 }
 
 
-
+//Styles for hover on cell, when player want to place X or Zero
 .current-x {
    .table__cell{
       &:hover{
-         &:not(.not-empty){
+         &:not(.x-placed):not(.zero-placed){
             &::before,
             &::after {
                content: '';
@@ -115,7 +151,7 @@
 .current-zero {
    .table__cell{
       &:hover{
-         &:not(.not-empty){
+         &:not(.x-placed):not(.zero-placed){
             &::after {
                content: '';
                width: 80%;
@@ -144,3 +180,5 @@
       }
    }
 }
+
+
